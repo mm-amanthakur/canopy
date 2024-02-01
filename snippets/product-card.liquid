@@ -1,0 +1,100 @@
+{% comment %}
+  Renders a product card
+
+  Accepts:
+
+  Usage:
+  {% render 'card-product', product: product  %}
+
+  **NOTE - product is an object
+            ** collection.products
+{% endcomment %}
+
+<style>
+  .product-item {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: start;
+    margin-bottom: 30px;
+  }
+  .product-item img {
+    object-fit: contain;
+  }
+  .compare_at_price {
+    padding-left: 5px;
+    text-decoration: line-through;
+    color: #ccc;
+    font-size: 18px;
+  }
+  .product-item div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .my-i {
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 22px;
+    background-color: #ffffffb0;
+    border-radius: 50%;
+    padding: 10px;
+    border: 1px solid rgb(199, 199, 199);
+    transition: all 0.1s linear;
+  }
+  .my-i:hover {
+    transform: scale(1.02);
+    color: var(--theme-color);
+  }
+
+  .product-item:hover i {
+    opacity: 1;
+  }
+  .product-image {
+    position: relative;
+  }
+
+  .review {
+    margin-bottom: 10px;
+  }
+  .discount-badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    background-color: var(--theme-color);
+    color: #fff;
+    padding: 0px 5px;
+    font-size: 11px;
+  }
+</style>
+
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+<div class="product-item">
+  <div class="product-image">
+    <p class="discount-badge">Save 30%</p>
+    {{- product.featured_image | image_url: width: '200 x 200' | image_tag | link_to: collection['url-'] }}
+    <i class="bx bx-search my-i"></i>
+  </div>
+  <div>
+    <p class="product-name">{{ product.title }}</p>
+  </div>
+  <div class="review">
+    <span class="stars">★★★★★</span>
+    <span>1 review</span>
+  </div>
+  <div class="price-div">
+    <span class="price"> {{ product.price | money_with_currency }}</span>
+    <span class="compare_at_price">
+      {{ product.compare_at_price | money_with_currency }}
+    </span>
+  </div>
+</div>
