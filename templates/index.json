@@ -38,9 +38,21 @@
         "stack_images_on_mobile": false,
         "show_text_below": false
       }
+    },
+    "featured_custom_4ijxV7": {
+      "type": "featured-custom",
+      "settings": {
+        "title": "Featured collection",
+        "heading_size": "h1",
+        "collection": "essentials",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2"
+      }
     }
   },
   "order": [
-    "image_banner"
+    "image_banner",
+    "featured_custom_4ijxV7"
   ]
 }
